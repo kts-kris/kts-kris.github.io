@@ -1,51 +1,118 @@
-
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="auto">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Codie — A colorful developer toolkit for every coder</title>
   <meta name="description" content="Codie 让多项目、容器化、模板与自动化变得轻盈有趣。A colorful developer toolkit for every coder." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://kts-kris.github.io/codie/" />
   <meta property="og:title" content="Codie" />
   <meta property="og:description" content="Multi‑project orchestration, containers, templates & automation — joyful for every coder." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kts-kris.github.io/codie/" />
   <meta property="og:image" content="https://raw.githubusercontent.com/kts-kris/codie/refs/heads/main/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Codie" />
+  <meta name="twitter:description" content="A colorful developer toolkit for every coder." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/kts-kris/codie/refs/heads/main/logo.png" />
   <meta name="theme-color" content="#0F2A3A" />
   <link rel="icon" href="https://raw.githubusercontent.com/kts-kris/codie/refs/heads/main/logo.png">
   <style>
     :root{
-      --bg:#0F2A3A; --fg:#fff; --muted:rgba(255,255,255,.75); --soft:rgba(255,255,255,.1);
+      --bg:#0F2A3A; --fg:#fff; --muted:rgba(255,255,255,.78); --soft:rgba(255,255,255,.08);
       --c1:#22D3EE; --c2:#A78BFA; --c3:#34D399; --c4:#F59E0B; --c5:#F472B6;
+      --card-border: rgba(255,255,255,.10);
     }
+    @media (prefers-color-scheme: light){
+      :root[data-theme="auto"]{
+        --bg:#0b1f2c; --fg:#fff; --muted:rgba(255,255,255,.78); --soft:rgba(255,255,255,.08);
+      }
+    }
+    [data-theme="light"]{
+      --bg:#f7fafc; --fg:#0a1620; --muted:#4a5a66; --soft:rgba(10,22,32,.06);
+      --card-border: rgba(10,22,32,.12);
+    }
+    [data-theme="light"] .invert-on-light{ filter: none; }
+    [data-theme="light"] .logo-badge{ background:#ffffff; box-shadow:0 0 0 1px rgba(10,22,32,.06) inset; }
     *{box-sizing:border-box} html,body{margin:0;padding:0}
     body{font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--fg);}
     a{color:inherit; text-decoration:none}
     .container{max-width:1100px; margin:0 auto; padding:0 24px}
     .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0}
     .nav .links a{opacity:.9; margin-left:24px} .nav .links a:hover{opacity:1}
-    .btn{display:inline-block; padding:12px 18px; border-radius:16px; background:rgba(255,255,255,.1); transition:.2s}
-    .btn.primary{background:#06b6d4} .btn.primary:hover{background:#22d3ee}
-    .btn:hover{background:rgba(255,255,255,.2)}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; background:var(--soft); transition:.2s; border:1px solid var(--card-border)}
+    .btn.primary{background:#06b6d4; border-color:#06b6d4} .btn.primary:hover{background:#22d3ee; border-color:#22d3ee}
+    .btn:hover{background:rgba(255,255,255,.18)}
+    [data-theme="light"] .btn:hover{background:rgba(10,22,32,.08)}
     .hero{display:grid; grid-template-columns:1fr; gap:28px; padding:40px 0 64px}
     @media(min-width:900px){ .hero{grid-template-columns:1.1fr .9fr; align-items:center} }
     h1{font-size:40px; line-height:1.15; margin:0} @media(min-width:900px){h1{font-size:52px}}
-    p.lead{opacity:.85; font-size:18px; line-height:1.7; white-space:pre-line}
-    .card{background:var(--soft); border:1px solid rgba(255,255,255,.08); border-radius:24px; padding:18px}
-    .grid{display:grid; gap:16px}
-    .grid.cols-3{@media(min-width:1024px){grid-template-columns:repeat(3,1fr)}}
+    p.lead{opacity:.92; font-size:18px; line-height:1.7; white-space:pre-line}
+    .card{background:var(--soft); border:1px solid var(--card-border); border-radius:20px; padding:18px}
     .grid-3{display:grid; gap:20px} @media(min-width:900px){.grid-3{grid-template-columns:repeat(3,1fr)}}
-    .footer{border-top:1px solid rgba(255,255,255,.1); margin-top:40px}
+    .footer{border-top:1px solid var(--card-border); margin-top:40px}
     .muted{color:var(--muted)}
-    .pill{display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg, rgba(34,211,238,.15), rgba(167,139,250,.15)); padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.12)}
+    .pill{display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:linear-gradient(135deg, rgba(34,211,238,.15), rgba(167,139,250,.15)); border-radius:50%; border:1px solid var(--card-border)}
     .logo-badge{position:relative; width:260px; height:260px; border-radius:32px; background:#0F2A3A; box-shadow:0 0 0 1px rgba(255,255,255,.08) inset; overflow:hidden; margin:auto}
     .float{position:absolute; font-family:ui-monospace, SFMono-Regular, Menlo, monospace; opacity:.7}
+    .meta-row{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-left:12px}
+    .badge{display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:14px; border:1px solid var(--card-border); background:var(--soft); font-size:12px}
+    .sep{opacity:.35; margin:0 6px}
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Codie",
+    "operatingSystem": "Windows, macOS, Linux",
+    "applicationCategory": "DeveloperApplication",
+    "description": "Multi‑project orchestration, containers, templates & automation — joyful for every coder.",
+    "url": "https://kts-kris.github.io/codie/",
+    "image": "https://raw.githubusercontent.com/kts-kris/codie/refs/heads/main/logo.png",
+    "creator": {
+      "@type": "Organization",
+      "name": "Codie Community",
+      "url": "https://github.com/kts-kris/codie"
+    }
+  }
+  </script>
+
+  <script>
+    // GA4 (optional) — set window.__GA_ID = "G-XXXX" to enable
+    (function() {
+      var GA_ID = window.__GA_ID || "";
+      if (!GA_ID) return;
+      var s = document.createElement('script'); s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+    })();
+    // Plausible (optional) — set window.__PLAUSIBLE_DOMAIN = "your.domain"
+    (function() {
+      var domain = window.__PLAUSIBLE_DOMAIN || "";
+      if (!domain) return;
+      var s = document.createElement('script'); s.defer = true; s.setAttribute('data-domain', domain);
+      s.src = "https://plausible.io/js/script.js";
+      document.head.appendChild(s);
+    })();
+  </script>
 </head>
 <body>
   <header class="container nav">
     <div style="display:flex;align-items:center;gap:12px">
       <img src="https://raw.githubusercontent.com/kts-kris/codie/refs/heads/main/logo.png" alt="Codie logo" width="40" height="40" style="border-radius:10px" />
       <strong style="letter-spacing:.3px">Codie</strong>
+      <div class="meta-row">
+        <span id="stars" class="badge" title="GitHub Stars">⭐ <span id="stars-num">--</span></span>
+        <span class="sep">·</span>
+        <span id="version" class="badge" title="Latest release">🏷️ <span id="version-tag">--</span></span>
+      </div>
     </div>
     <nav class="links" id="nav-links">
       <a href="#features" data-zh="特性" data-en="Features">特性</a>
@@ -54,6 +121,7 @@
       <a href="#faq">FAQ</a>
     </nav>
     <div style="display:flex;gap:10px">
+      <button id="theme-btn" class="btn" aria-label="theme toggle">🌙/☀️</button>
       <button id="lang-btn" class="btn" aria-label="language toggle">EN</button>
       <a class="btn primary" href="https://github.com/kts-kris/codie" target="_blank" rel="noreferrer">GitHub</a>
     </div>
@@ -78,7 +146,7 @@ We treat code as the source—and we build joyful tools for developers. Codie ma
       </div>
       <div>
         <div class="logo-badge" aria-hidden="true" id="badge">
-          <img src="https://raw.githubusercontent.com/kts-kris/codie/refs/heads/main/logo-1080.png" alt="" width="220" height="220" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:220px;height:220px;border-radius:28px"/>
+          <img src="https://raw.githubusercontent.com/kts-kris/codie/refs/heads/main/logo.png" alt="" width="220" height="220" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:220px;height:220px;border-radius:28px"/>
         </div>
       </div>
     </section>
@@ -169,10 +237,23 @@ codie down && codie clean      </div>
     });
     swap();
 
+    // 主题切换：auto/light 切换 & 记忆
+    const root = document.documentElement;
+    const THEME_KEY = 'codie-theme';
+    const applyTheme = (val) => root.setAttribute('data-theme', val);
+    const saved = localStorage.getItem(THEME_KEY);
+    applyTheme(saved || 'auto');
+    document.getElementById('theme-btn').addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme');
+      const next = cur === 'light' ? 'auto' : 'light'; // 在深色品牌基调下切 light/auto
+      applyTheme(next);
+      localStorage.setItem(THEME_KEY, next);
+    });
+
     // 漂浮代码粒子（简易）
     const badge = document.getElementById('badge');
     const tokens = ['<>','{}','[]','//',';','+=','==','=>','var','def','return'];
-    for(let i=0;i<36;i++){ 
+    for(let i=0;i<36;i++){
       const s = document.createElement('div');
       s.className = 'float';
       s.style.left = Math.random()*100 + '%';
@@ -182,6 +263,31 @@ codie down && codie clean      </div>
       s.textContent = tokens[i%tokens.length];
       badge.appendChild(s);
     }
+
+    // 动态 GitHub Stars & Release 信息
+    const starsEl = document.getElementById('stars-num');
+    const versionEl = document.getElementById('version-tag');
+    (async () => {
+      try {
+        const repo = await fetch('https://api.github.com/repos/kts-kris/codie').then(r => r.json());
+        if (repo && typeof repo.stargazers_count === 'number') {
+          starsEl.textContent = repo.stargazers_count.toString();
+        }
+      } catch (e) {
+        starsEl.textContent = '--';
+      }
+      try {
+        const relResp = await fetch('https://api.github.com/repos/kts-kris/codie/releases/latest');
+        if (relResp.ok) {
+          const rel = await relResp.json();
+          versionEl.textContent = rel.tag_name || 'dev';
+        } else {
+          versionEl.textContent = 'dev';
+        }
+      } catch (e) {
+        versionEl.textContent = 'dev';
+      }
+    })();
   </script>
 </body>
 </html>
