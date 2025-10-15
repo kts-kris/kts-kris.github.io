@@ -1,0 +1,187 @@
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Codie — A colorful developer toolkit for every coder</title>
+  <meta name="description" content="Codie 让多项目、容器化、模板与自动化变得轻盈有趣。A colorful developer toolkit for every coder." />
+  <meta property="og:title" content="Codie" />
+  <meta property="og:description" content="Multi‑project orchestration, containers, templates & automation — joyful for every coder." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/kts-kris/codie/refs/heads/main/logo.png" />
+  <meta name="theme-color" content="#0F2A3A" />
+  <link rel="icon" href="https://raw.githubusercontent.com/kts-kris/codie/refs/heads/main/logo.png">
+  <style>
+    :root{
+      --bg:#0F2A3A; --fg:#fff; --muted:rgba(255,255,255,.75); --soft:rgba(255,255,255,.1);
+      --c1:#22D3EE; --c2:#A78BFA; --c3:#34D399; --c4:#F59E0B; --c5:#F472B6;
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0}
+    body{font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--fg);}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:0 24px}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0}
+    .nav .links a{opacity:.9; margin-left:24px} .nav .links a:hover{opacity:1}
+    .btn{display:inline-block; padding:12px 18px; border-radius:16px; background:rgba(255,255,255,.1); transition:.2s}
+    .btn.primary{background:#06b6d4} .btn.primary:hover{background:#22d3ee}
+    .btn:hover{background:rgba(255,255,255,.2)}
+    .hero{display:grid; grid-template-columns:1fr; gap:28px; padding:40px 0 64px}
+    @media(min-width:900px){ .hero{grid-template-columns:1.1fr .9fr; align-items:center} }
+    h1{font-size:40px; line-height:1.15; margin:0} @media(min-width:900px){h1{font-size:52px}}
+    p.lead{opacity:.85; font-size:18px; line-height:1.7; white-space:pre-line}
+    .card{background:var(--soft); border:1px solid rgba(255,255,255,.08); border-radius:24px; padding:18px}
+    .grid{display:grid; gap:16px}
+    .grid.cols-3{@media(min-width:1024px){grid-template-columns:repeat(3,1fr)}}
+    .grid-3{display:grid; gap:20px} @media(min-width:900px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+    .footer{border-top:1px solid rgba(255,255,255,.1); margin-top:40px}
+    .muted{color:var(--muted)}
+    .pill{display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg, rgba(34,211,238,.15), rgba(167,139,250,.15)); padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.12)}
+    .logo-badge{position:relative; width:260px; height:260px; border-radius:32px; background:#0F2A3A; box-shadow:0 0 0 1px rgba(255,255,255,.08) inset; overflow:hidden; margin:auto}
+    .float{position:absolute; font-family:ui-monospace, SFMono-Regular, Menlo, monospace; opacity:.7}
+  </style>
+</head>
+<body>
+  <header class="container nav">
+    <div style="display:flex;align-items:center;gap:12px">
+      <img src="https://raw.githubusercontent.com/kts-kris/codie/refs/heads/main/logo.png" alt="Codie logo" width="40" height="40" style="border-radius:10px" />
+      <strong style="letter-spacing:.3px">Codie</strong>
+    </div>
+    <nav class="links" id="nav-links">
+      <a href="#features" data-zh="特性" data-en="Features">特性</a>
+      <a href="#how" data-zh="如何运作" data-en="How it works">如何运作</a>
+      <a href="#cli">CLI</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div style="display:flex;gap:10px">
+      <button id="lang-btn" class="btn" aria-label="language toggle">EN</button>
+      <a class="btn primary" href="https://github.com/kts-kris/codie" target="_blank" rel="noreferrer">GitHub</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1 data-zh="为所有 Coder 打造的多彩开发工具" data-en="A colorful developer toolkit for every coder">为所有 Coder 打造的多彩开发工具</h1>
+        <p class="lead" id="lead" data-zh="“Codie” 由 code 与 “爹”（die）的谐音组合而来：
+
+我们以代码为“父”，以敬畏之心服务开发者。Codie 让多项目、容器化、模板与自动化变得轻盈有趣。" data-en="“Codie” fuses “code” with a playful nod to “the father of our craft.”
+
+We treat code as the source—and we build joyful tools for developers. Codie makes multi‑project orchestration, containers, templates and automation light and fun.">“Codie” 由 code 与 “爹”（die）的谐音组合而来：
+
+我们以代码为“父”，以敬畏之心服务开发者。Codie 让多项目、容器化、模板与自动化变得轻盈有趣。</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px">
+          <a class="btn primary" href="#features" data-zh="立即了解特性" data-en="Explore features">立即了解特性</a>
+          <a class="btn" href="https://github.com/kts-kris/codie" target="_blank" rel="noreferrer" data-zh="在 GitHub 查看" data-en="View on GitHub">在 GitHub 查看</a>
+        </div>
+        <p class="muted" style="margin-top:8px" data-zh="提示：页面视觉基于你的品牌 Logo 的“代码头像”。" data-en="Note: visuals are inspired by your code‑built avatar logo.">提示：页面视觉基于你的品牌 Logo 的“代码头像”。</p>
+      </div>
+      <div>
+        <div class="logo-badge" aria-hidden="true" id="badge">
+          <img src="https://raw.githubusercontent.com/kts-kris/codie/refs/heads/main/logo.png" alt="" width="220" height="220" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:220px;height:220px;border-radius:28px"/>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" style="padding:18px 0 8px">
+      <h2 data-zh="核心特性" data-en="Core Features">核心特性</h2>
+      <p class="muted" data-zh="基于 README 的产品设定：多项目管理、容器/环境编排、模板与脚手架、命令行驱动、可扩展插件。以下为首屏即可理解的价值卡片。" data-en="Based on the README: multi‑project management, container/env orchestration, templates & scaffolds, CLI‑first, and extensible plugins.">
+        基于 README 的产品设定：多项目管理、容器/环境编排、模板与脚手架、命令行驱动、可扩展插件。以下为首屏即可理解的价值卡片。
+      </p>
+      <div class="grid-3" style="margin-top:16px">
+        <div class="card"><strong data-zh="一键就绪的开发环境" data-en="One‑click dev env">一键就绪的开发环境</strong><p class="muted" data-zh="用声明式配置拉起容器、依赖与常用工具，人人即开即用。" data-en="Declaratively spin up containers, dependencies and tools so anyone can start instantly.">用声明式配置拉起容器、依赖与常用工具，人人即开即用。</p></div>
+        <div class="card"><strong data-zh="多项目看板" data-en="Multi‑project dashboard">多项目看板</strong><p class="muted" data-zh="在一个面板里集中启动/停止/重建多个服务或项目。" data-en="Start/stop/rebuild multiple services or projects from one board.">在一个面板里集中启动/停止/重建多个服务或项目。</p></div>
+        <div class="card"><strong data-zh="模板与脚手架" data-en="Templates & scaffolds">模板与脚手架</strong><p class="muted" data-zh="内置常用栈模板，复制即可用，减少“环境折腾”。" data-en="Built‑in templates for common stacks to cut setup yak‑shaving.">内置常用栈模板，复制即可用，减少“环境折腾”。</p></div>
+        <div class="card"><strong>CLI‑first</strong><p class="muted" data-zh="统一 codie 命令，覆盖初始化、运行、诊断与清理。" data-en="A unified `codie` CLI for init, run, diagnose, and clean.">统一 codie 命令，覆盖初始化、运行、诊断与清理。</p></div>
+        <div class="card"><strong data-zh="插件与扩展" data-en="Plugins & extensibility">插件与扩展</strong><p class="muted" data-zh="以插件扩展能力：集成 CI/CD、代码质量、包管理、镜像仓库等。" data-en="Extend via plugins: integrate CI/CD, code quality, registries and more.">以插件扩展能力：集成 CI/CD、代码质量、包管理、镜像仓库等。</p></div>
+        <div class="card"><strong data-zh="团队协作与可复制性" data-en="Team reproducibility">团队协作与可复制性</strong><p class="muted" data-zh="让新人 10 分钟跑通；让跨平台协作不再受环境影响。" data-en="Onboard in 10 minutes; collaborate across platforms without env drift.">让新人 10 分钟跑通；让跨平台协作不再受环境影响。</p></div>
+      </div>
+    </section>
+
+    <section id="how" style="padding:34px 0 0">
+      <h2 data-zh="如何运作" data-en="How it works">如何运作</h2>
+      <div class="grid-3" style="margin-top:16px">
+        <div class="card"><span class="pill">1</span><div style="height:8px"></div><strong data-zh="声明项目" data-en="Declare projects">声明项目</strong><p class="muted" data-zh="在 codie.config.* 中声明服务、容器与依赖；选择模板或自定义镜像。" data-en="Declare services/containers/deps in codie.config.*; pick templates or custom images.">在 codie.config.* 中声明服务、容器与依赖；选择模板或自定义镜像。</p></div>
+        <div class="card"><span class="pill">2</span><div style="height:8px"></div><strong data-zh="一键启停" data-en="One‑click up/down">一键启停</strong><p class="muted" data-zh="用 UI 或 codie up/down 管理多项目；支持 rebuild、logs、health。" data-en="Use UI or `codie up/down` to manage projects; supports rebuild, logs, health.">用 UI 或 codie up/down 管理多项目；支持 rebuild、logs、health。</p></div>
+        <div class="card"><span class="pill">3</span><div style="height:8px"></div><strong data-zh="共享复用" data-en="Share & reuse">共享复用</strong><p class="muted" data-zh="将配置与模板入库：同栈项目复用，同步到团队知识库。" data-en="Commit configs/templates: reuse across stacks and share with the team.">将配置与模板入库：同栈项目复用，同步到团队知识库。</p></div>
+      </div>
+    </section>
+
+    <section id="cli" style="padding:34px 0 0">
+      <h2>CLI</h2>
+      <div class="card" style="margin-top:16px; font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:14px; line-height:1.8; overflow:auto; white-space:pre;">
+# install (example)
+npm i -g @codie/cli
+
+# initialize a workspace
+codie init
+
+# bring services up
+codie up
+# or with a profile
+codie up --profile web+db
+
+# rebuild with cache busting
+codie rebuild --service api --no-cache
+
+# stop & clean
+codie down && codie clean      </div>
+    </section>
+
+    <section id="faq" style="padding:34px 0 40px">
+      <h2>FAQ</h2>
+      <div class="grid" style="grid-template-columns:1fr;gap:16px;margin-top:16px">
+        <div class="card"><strong data-zh="这个名字会不会“过于可爱”？" data-en="Is the name too playful?">这个名字会不会“过于可爱”？</strong><p class="muted" data-zh="我们希望它是亲切又专业的：以代码为“父”的敬畏感 + 让人微笑的趣味性。" data-en="We aim for warm yet professional: reverence for code as the craft’s “parent,” with a smile‑inducing twist.">我们希望它是亲切又专业的：以代码为“父”的敬畏感 + 让人微笑的趣味性。</p></div>
+        <div class="card"><strong data-zh="和 devcontainer/docker‑compose 等怎么配合？" data-en="How does this relate to devcontainers/docker‑compose?">和 devcontainer/docker‑compose 等怎么配合？</strong><p class="muted" data-zh="Codie 是更上层的编排与模板工具：读写这些标准文件，提供更友好的多项目体验与脚手架。" data-en="Codie sits above as an orchestrator & templating layer: it reads/writes standard files and offers a friendlier multi‑project workflow.">Codie 是更上层的编排与模板工具：读写这些标准文件，提供更友好的多项目体验与脚手架。</p></div>
+        <div class="card"><strong data-zh="适合个人还是团队？" data-en="Solo or teams?">适合个人还是团队？</strong><p class="muted" data-zh="都适合。个人更快上手，团队获得“可复制的环境”和稳定交付。" data-en="Both. Individuals get speed; teams gain reproducibility and stable delivery.">都适合。个人更快上手，团队获得“可复制的环境”和稳定交付。</p></div>
+        <div class="card"><strong data-zh="支持哪些语言与框架？" data-en="What stacks are supported?">支持哪些语言与框架？</strong><p class="muted" data-zh="开箱即用：Node/Python/Java/Go/Rust/前端工程等；也可通过模板与自定义镜像扩展。" data-en="Batteries‑included: Node/Python/Java/Go/Rust/FE toolchains; extend via templates or custom images.">开箱即用：Node/Python/Java/Go/Rust/前端工程等；也可通过模板与自定义镜像扩展。</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="padding:22px 0; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap">
+      <div style="display:flex; align-items:center; gap:10px">
+        <img src="https://raw.githubusercontent.com/kts-kris/codie/refs/heads/main/logo.png" alt="Codie logo" width="28" height="28" style="border-radius:8px" />
+        <span class="muted">© <span id="year"></span> Codie</span>
+      </div>
+      <div class="muted" data-zh="由代码启发、为开发者而生。" data-en="Inspired by code, built for developers.">由代码启发、为开发者而生。</div>
+    </div>
+  </footer>
+
+  <script>
+    // 年份
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 语言切换（默认 zh）
+    let lang = 'zh';
+    const swap = () => {
+      const attr = lang === 'zh' ? 'data-zh' : 'data-en';
+      document.querySelectorAll('[data-zh]').forEach(node => {
+        const text = node.getAttribute(attr);
+        if(text) node.textContent = text;
+      });
+      document.getElementById('lang-btn').textContent = lang === 'zh' ? 'EN' : '中文';
+    };
+    document.getElementById('lang-btn').addEventListener('click', () => {
+      lang = lang === 'zh' ? 'en' : 'zh';
+      swap();
+    });
+    swap();
+
+    // 漂浮代码粒子（简易）
+    const badge = document.getElementById('badge');
+    const tokens = ['<>','{}','[]','//',';','+=','==','=>','var','def','return'];
+    for(let i=0;i<36;i++){ 
+      const s = document.createElement('div');
+      s.className = 'float';
+      s.style.left = Math.random()*100 + '%';
+      s.style.top = Math.random()*100 + '%';
+      s.style.transform = 'translate(-50%,-50%) rotate('+(Math.random()*360)+'deg) scale('+(0.8+Math.random()*1.1)+')';
+      s.style.color = ['var(--c1)','var(--c2)','var(--c3)','var(--c4)','var(--c5)'][i%5];
+      s.textContent = tokens[i%tokens.length];
+      badge.appendChild(s);
+    }
+  </script>
+</body>
+</html>
